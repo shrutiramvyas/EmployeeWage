@@ -1,20 +1,28 @@
 public class WelcomeEmp {
+    public static final int part_time = 1;
+    public static final int full_time = 2;
+    public static final int emp_rate_per_hour = 20;
+    public static final int no_of_working_days = 20;
+    public static final int max_hour_in_month = 10;
     public static void main(String[] args) {
-        int wage_per_hour=20;
-        int working_hour=8;
-        int total_wage_hour=0;
-        int partTime_hour=(working_hour/2);
-            int isPresent = (int)(Math.random() * 3);
-            if (isPresent == 1){
-                total_wage_hour=working_hour*wage_per_hour;
-                System.out.println("Total wages of employee who work in full Time Hour is: " + total_wage_hour);
+        int emp_hours = 0, total_emp_hrs = 0, total_working_days = 0;
+        while(total_emp_hrs <= max_hour_in_month && total_working_days < no_of_working_days) {
+            total_working_days++;
+            int empcheck = (int) Math.floor(Math.random() * 10 % 3);
+            switch (empcheck) {
+                case part_time:
+                    emp_hours = 4;
+                    break;
+                case full_time:
+                    emp_hours = 8;
+                    break;
+                default:
+                    emp_hours = 0;
             }
-            else if(isPresent == 2){
-                total_wage_hour=partTime_hour*wage_per_hour;
-                System.out.println("Total wages of employee who work in part Time Hour: " + total_wage_hour);
-            }
-            else {
-                System.out.println("Total wages of employee is Absent: " + total_wage_hour);
-            }
+            total_emp_hrs += emp_hours;
+            System.out.println("Day" + total_working_days + " Emp Hr: " + emp_hours);
+        }
+        int totalEmpWages=total_emp_hrs*emp_rate_per_hour;
+        System.out.println("Total Emp Wages: " +totalEmpWages);
     }
 }
